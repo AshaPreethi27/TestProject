@@ -1,0 +1,19 @@
+.footer-bg{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 35px;
+    margin-top: 8%;
+    margin-bottom: 20px;
+    width:90%;
+}
+.foot-txt{
+    color:#4c535f;
+    font-size:12px ;
+    margin-top: 0px;
+    margin-bottom:0px;
+}
+.icon-c{
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
