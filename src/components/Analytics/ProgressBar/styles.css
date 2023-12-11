@@ -1,0 +1,15 @@
+.head-name{
+    color:#262e3c;
+    font-size:13px;
+    text-align: left;
+    font-weight:600;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 10px;
+ }
+ .head-bg{
+    display:flex;
+    justify-content: space-between;
+    margin-top: 0px;
+    margin-bottom: 0px;
+ }

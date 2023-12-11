@@ -1,78 +1,68 @@
-.navbar{
-    display:flex;
-    flex-direction: row;
-    align-self: flex-start;
-    width: 100vw;
-    margin-left:10px;
-    margin-right:10px;
-   
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  width: 100vw;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.logo-container{
-    display:flex;
-    flex-direction: row;
-    padding:10px;
-    width:10%;
-    justify-content: flex-start;
-    
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  width: 10%;
+  justify-content: flex-start;
 }
 
-
-.titles-container{
-    display:flex;
-    flex-direction: row;
-    justify-content:center;
-    width:50%;
-    margin-left: 10%;
+.titles-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 50%;
+  margin-left: 10%;
 }
 
-.navbar-profile{
-    display:flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding: 10px;
-    width:20%;
-    margin-left:4%;
+.navbar-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 10px;
+  width: 20%;
+  margin-left: 4%;
 }
 
-.company-logo{
-    height:60px;
-    width:160px;
-    margin-left:20px;
-    
-    margin-bottom:10px ;
-    
-    
+.company-logo {
+  height: 60px;
+  width: 160px;
+  margin-left: 20px;
+  margin-bottom: 10px;
 }
 
-.navbar-titles{
-    color:"#858686";
-    font-size: 13px;
-    margin-left: 10px;
-    padding:10px;
-
+.navbar-titles {
+  color: "#858686";
+  font-size: 13px;
+  margin-left: 10px;
+  padding: 10px;
 }
 
-.person-name{
-    color:"#4c4d4e";
-    font-size: 14px;
-    font-weight:600;
-    padding: 10px;
-    margin:5px;
-
-
+.person-name {
+  color: "#4c4d4e";
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
+  margin: 5px;
 }
 
 .pro-pic {
-    height:50px;
-    width:50px;
-    margin-bottom:10px ;
-    margin-top: 0px;
-    border-radius: 40px;
-   
+  height: 50px;
+  width: 50px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  border-radius: 40px;
 }
 
 .bell-icon {
-    margin-top:12px ;
-    padding:5px;
+  margin-top: 12px;
+  padding: 5px;
 }

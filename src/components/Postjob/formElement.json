@@ -1,0 +1,356 @@
+[
+  {
+    "page_label": "Post a job",
+    "description": "Awareness of behaviour style is important to build more effective communication reducing tension between coworkers and developing more productive work relationships.With this understading one can gain insight into the impact of specific behaviors on other people and learn how specific behaviours might be perceived as well as subsequently responded to.These styles are not designated to changea person but rather used as a tool for building productive relationships.",
+    "fields": [
+      {
+        "field_id": "1",
+        "field_label": "Job Title",
+        "field_mandatory": "yes",
+        "field_placeholder": "Enter name",
+        "field_type": "text",
+        "field_value": ""
+      },
+      {
+        "field_id": "2",
+        "field_label": "Job Sector",
+        "field_mandatory": "yes",
+        "field_placeholder": "Select one",
+        "field_type": "select",
+        "field_value": "Accounting",
+        "field_options": [
+          {
+            "options": "Accounting"
+          },
+          {
+            "options": "Financial services"
+          }
+        ]
+      },
+      {
+        "field_id": "3",
+        "field_label": "Job Type Offered",
+        "field_mandatory": "yes",
+        "field_value": "Full Time",
+        "field_type": "radio",
+        "field_name": "radio group",
+        "field_options": [
+          {
+            "options": "Full Time"
+          },
+          {
+            "options": "Part Time"
+          },
+          {
+            "options": "Contract"
+          },
+          {
+            "options": "Internship"
+          }
+        ]
+      },
+      {
+        "field_id": "4",
+        "field_label": "Upload Job Description",
+        "field_mandatory": "yes",
+        "field_type": "file"
+      },
+      {
+        "field_id": "5",
+        "field_label": "Description Details",
+        "field_mandatory": "yes",
+        "field_placeholder": "Enter Text",
+        "field_type": "textarea"
+      },
+      {
+        "field_id": "6",
+        "field_label": "Duties & Responsibilities",
+        "field_mandatory": "yes",
+        "field_placeholder": "Enter Text",
+        "field_type": "textarea"
+      },
+      {
+        "field_id": "7",
+        "field_label": "Skill Requirements & Qualifications",
+        "field_type": "skills",
+        "field_head": "Key skills",
+        "field_options": [
+          {
+            "id": 1,
+            "title": "AI/ML",
+            "state": "false"
+          },
+          {
+            "id": 2,
+            "title": "Blockchain Tech",
+            "state": "false"
+          },
+          {
+            "id": 3,
+            "title": "Salesforce",
+            "state": "false"
+          },
+          {
+            "id": 4,
+            "title": "Cloud Computing",
+            "state": "false"
+          },
+          {
+            "id": 5,
+            "title": "Devops",
+            "state": "false"
+          },
+          {
+            "id": 6,
+            "title": "Tableau",
+            "state": "false"
+          },
+          {
+            "id": 7,
+            "title": "Qualtrics",
+            "state": "false"
+          },
+          {
+            "id": 8,
+            "title": "Business Analyst",
+            "state": "false"
+          },
+          {
+            "id": 9,
+            "title": "Cybersecurity",
+            "state": "false"
+          },
+          {
+            "id": 10,
+            "title": "RealEstate",
+            "state": "false"
+          },
+          {
+            "id": 11,
+            "title": "Integration",
+            "state": "false"
+          },
+          {
+            "id": 12,
+            "title": "3D Artist",
+            "state": "false"
+          },
+          {
+            "id": 13,
+            "title": "SAS",
+            "state": "false"
+          },
+          {
+            "id": 14,
+            "title": "Metaverse",
+            "state": "false"
+          },
+          {
+            "id": 15,
+            "title": "Video Editing",
+            "state": "false"
+          },
+          {
+            "id": 16,
+            "title": "UI/UX Designer",
+            "state": "false"
+          },
+          {
+            "id": 17,
+            "title": "Designer",
+            "state": "false"
+          },
+          {
+            "id": 18,
+            "title": "Time-management",
+            "state": "false"
+          },
+          {
+            "id": 19,
+            "title": "Documentation",
+            "state": "false"
+          },
+          {
+            "id": 20,
+            "title": "SSP",
+            "state": "false"
+          }
+        ]
+      },
+      {
+        "field_id": "8",
+        "field_label": "Education*",
+        "field_type": "education",
+        "field_options": [
+          {
+            "id": 1,
+            "title": "Highschool/Equivalent",
+            "state": "false"
+          },
+          {
+            "id": 2,
+            "title": "Associates",
+            "state": "false"
+          },
+          {
+            "id": 3,
+            "title": "Bachelors",
+            "state": "false"
+          },
+          {
+            "id": 4,
+            "title": "Masters",
+            "state": "false"
+          },
+          {
+            "id": 5,
+            "title": "Doctoral",
+            "state": "false"
+          }
+        ]
+      },
+      {
+        "field_id": "9",
+        "field_label": "Field of Education",
+        "field_mandatory": "yes",
+        "field_value": "Full Time",
+        "field_type": "radio",
+        "field_name": "radio group",
+        "field_options": [
+          {
+            "options": "Any"
+          },
+          {
+            "options": "Selected Fields"
+          }
+        ]
+      },
+      {
+        "field_id": "10",
+        "field_label": "State",
+        "field_mandatory": "yes",
+        "field_placeholder": "Select one",
+        "field_type": "select",
+        "field_value": "Texas",
+        "field_options": [
+          {
+            "options": "Texas"
+          },
+          {
+            "options": "Albania"
+          }
+        ]
+      },
+      {
+        "field_id": "11",
+        "field_label": "City",
+        "field_mandatory": "yes",
+        "field_placeholder": "Select one",
+        "field_type": "select",
+        "field_value": "Accounting",
+        "field_options": [
+          {
+            "options": "Accounting"
+          },
+          {
+            "options": "Financial services"
+          }
+        ]
+      },
+      {
+        "field_id": "12",
+        "field_label": "Openings",
+        "field_mandatory": "yes",
+        "field_placeholder": "Select one",
+        "field_type": "select",
+        "field_value": "56",
+        "field_options": [
+          {
+            "options": "56"
+          },
+          {
+            "options": "66"
+          }
+        ]
+      },
+      {
+        "field_id": "13",
+        "field_label": "Work Timings",
+        "field_mandatory": "yes",
+        "field_type": "select",
+        "field_value": "IST",
+        "field_options": [
+          {
+            "options": "IST"
+          },
+          {
+            "options": "sst"
+          }
+        ]
+      },
+      {
+        "field_id": "14",
+        "field_label": "From",
+        "field_mandatory": "yes",
+        "field_type": "time",
+        "field_value": "9:30 AM",
+        "field_options": [
+          {
+            "options": "9:30 AM"
+          },
+          {
+            "options": "8:30 AM"
+          }
+        ]
+      },
+      {
+        "field_id": "15",
+        "field_label": "To",
+        "field_mandatory": "yes",
+        "field_type": "time",
+        "field_value": "11:30 PM",
+        "field_options": [
+          {
+            "options": "10:30 PM"
+          },
+          {
+            "options": "11:30 PM"
+          }
+        ]
+      },
+      {
+        "field_id": "16",
+        "field_label": "Mode",
+        "field_mandatory": "yes",
+        "field_value": "Full Time",
+        "field_type": "radio",
+        "field_name": "radio group",
+        "field_options": [
+          {
+            "options": "Office"
+          },
+          {
+            "options": "Remote"
+          },
+          {
+            "options": "Hybrid"
+          }
+        ]
+      },
+      {
+        "field_id": "17",
+        "field_label": "Hiring From",
+        "field_mandatory": "yes",
+        "field_type": "date",
+        "field_value": "March 11"
+      },
+      {
+        "field_id": "18",
+        "field_label": "Hiring Till",
+        "field_mandatory": "yes",
+        "field_type": "date",
+        "field_value": "April 26th"
+      }
+    ]
+  }
+]

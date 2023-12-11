@@ -1,0 +1,26 @@
+.row-bg{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding:0px 10px; 
+}
+.title{
+    color:#262e3c;
+   font-size:13px;
+   text-align: left;
+   font-weight:600;
+}
+.occupation{
+    color:#262e3c;
+   font-size:14px;
+   text-align: left;
+   font-weight:500;
+}
+.fraction{
+    color:#262e3c;
+   font-size:15px;
+   
+   font-weight:500;
+   margin-right: 10px;
+}
