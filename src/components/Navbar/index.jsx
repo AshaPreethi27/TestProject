@@ -6,13 +6,20 @@ import { useAuth0 } from "@auth0/auth0-react";
 function Navbar() {
   const { loginWithRedirect,isAuthenticated,logout,user } = useAuth0();
 
-  const logoutWithRedirect = () =>
-  console.log("logout")
+  // const logoutWithRedirect = () => {
+  //   console.log("logout"); 
+  //   logout({
+  //     logoutParams: {
+  //       returnTo: window.location.origin,
+  //     },
+  //   });
+  // };
+
+  const handleLogout = () => {
     logout({
-        logoutParams: {
-          returnTo: window.location.origin,
-        }
+      returnTo: window.location.origin,
     });
+  };
 
   return (
     <div className="navbar">
@@ -38,7 +45,7 @@ function Navbar() {
       </div>
       <div>
         {isAuthenticated ? 
-        (<button onClick={() => logoutWithRedirect}>Log Out</button>) :
+        (<button onClick={handleLogout}>Log Out</button>) :
         ( <button onClick={() => loginWithRedirect()}>Log In</button> ) }
       </div>
       <div className="navbar-profile">

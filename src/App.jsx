@@ -13,7 +13,7 @@ function App() {
     <div className="bg">
        <Navbar />
       <Routes>
-        <Route path="/postjob" element={<PostJob />} />
+        {/* <Route path="/postjob" element={<PostJob />} /> */}
         <Route path="/dashboard/*" element={<Dashboard />} />
         <Route
           path="/dashboard/analytics"
