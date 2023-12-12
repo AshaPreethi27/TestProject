@@ -49,7 +49,7 @@ function Navbar() {
         ( <button onClick={() => loginWithRedirect()}>Log In</button> ) }
       </div>
       <div className="navbar-profile">
-        <p className="person-name">{isAuthenticated ? user.name : ""}</p>
+        <p className="person-name">{user?.name}</p>
         <img
           src="https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg"
           alt="pro-pic"
