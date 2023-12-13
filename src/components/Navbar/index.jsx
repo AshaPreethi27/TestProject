@@ -21,7 +21,7 @@ function Navbar() {
     });
   };
   
-console.log({user});
+console.log(user);
   return (
     <div className="navbar">
       <div className="logo-container">
@@ -51,8 +51,7 @@ console.log({user});
       </div>
       <div className="navbar-profile">
         <p className="person-name">{user.name}</p>
-        <p>{user.data}</p>
-        <p>{user.data.data}</p>
+        <p>{user.email}</p>
         <img
           src="https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg"
           alt="pro-pic"
