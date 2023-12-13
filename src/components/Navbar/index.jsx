@@ -1,7 +1,7 @@
 import "./styles.css";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+import { User, useAuth0 } from "@auth0/auth0-react";
 
 function Navbar() {
   const { loginWithRedirect,isAuthenticated,logout,user } = useAuth0();
@@ -20,7 +20,8 @@ function Navbar() {
       returnTo: window.location.origin,
     });
   };
-
+  
+console.log({user});
   return (
     <div className="navbar">
       <div className="logo-container">
@@ -49,7 +50,9 @@ function Navbar() {
         ( <button onClick={() => loginWithRedirect()}>Log In</button> ) }
       </div>
       <div className="navbar-profile">
-        <p className="person-name">{user?.name}</p>
+        <p className="person-name">{user.name}</p>
+        <p>{user.data}</p>
+        <p>{user.data.data}</p>
         <img
           src="https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg"
           alt="pro-pic"
