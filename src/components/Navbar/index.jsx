@@ -45,7 +45,7 @@ function Navbar() {
         try {
           // Get the access token
           const accessToken = await getAccessTokenSilently();
-
+          console.log(accessToken);
           // Make an authenticated request to your backend API
           const backendResponse = await fetch('https://paymentsapi.mindwavetech.com/api/users/social_signup', {
             method: 'POST',
