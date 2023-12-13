@@ -21,7 +21,7 @@ function Navbar() {
     });
   };
 
-  {isAuthenticated ? console.log(user):""}
+
   
 
   return (
