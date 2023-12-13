@@ -76,7 +76,7 @@ function Navbar() {
           }
 
         } catch (error) {
-          console.error("Error getting access token or fetching data:", error);
+          console.error("Error in fetching data:", error.message);
           setError('Error getting access token or fetching data');
         }
       }
