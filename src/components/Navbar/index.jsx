@@ -54,7 +54,7 @@ function Navbar() {
       <div className="navbar-profile">
         <p className="person-name">{user?.name}</p>
         <p>{user?.email}</p>
-        <p>{user}</p>
+        {isAuthenticated ? console.log(user):""}
         <img
           src="https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg"
           alt="pro-pic"
