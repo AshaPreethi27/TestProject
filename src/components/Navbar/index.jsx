@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import {  useAuth0 } from "@auth0/auth0-react";
 
 function Navbar() {
-  const { loginWithRedirect,isAuthenticated,logout,user } = useAuth0();
+  const { loginWithRedirect,isAuthenticated,logout,user,getAccessTokenSilently } = useAuth0();
  
   const handleLogout = () => {
     logout({
@@ -13,45 +13,77 @@ function Navbar() {
     });
   };
 
-  const sendUserDataToBackend = async (userData) => {
-    try {
-      const response = await fetch('https://paymentsapi.mindwavetech.com/api/users/social_signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          // Include any additional headers needed for authentication
-          // Authorization: `Bearer ${YOUR_ACCESS_TOKEN}`,
-        },
-        body: JSON.stringify(userData),
-      });
+  // const sendUserDataToBackend = async (userData) => {
+  //   try {
+  //     const response = await fetch('https://paymentsapi.mindwavetech.com/api/users/social_signup', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         // Include any additional headers needed for authentication
+  //         // Authorization: `Bearer ${YOUR_ACCESS_TOKEN}`,
+  //       },
+  //       body: JSON.stringify(userData),
+  //     });
 
-      if (response.ok) {
-        // Handle success, if needed
-        console.log('User data sent to backend successfully');
-      } else {
-        // Handle error response
-        console.error('Failed to send user data to backend');
-      }
-    } catch (error) {
-      console.error('Error sending user data to backend', error);
-    }
-  };
+  //     if (response.ok) {
+  //       // Handle success, if needed
+  //       console.log('User data sent to backend successfully');
+  //     } else {
+  //       // Handle error response
+  //       console.error('Failed to send user data to backend');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error sending user data to backend', error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   if (isAuthenticated && user) {
+  //     // If user is authenticated and user data is available, send it to the backend
+  //     sendUserDataToBackend({
+  //       first_name: user.name,
+  //       last_name: null,
+  //       email: user.email,
+  //       password:null,
+  //       mobileNumber:null,
+  //       platform:"G",
+  //       platform_id:user.sub,
+  //       // Add other properties as needed
+  //     });
+  //   }
+  // }, [isAuthenticated, user]);
 
   useEffect(() => {
-    if (isAuthenticated && user) {
-      // If user is authenticated and user data is available, send it to the backend
-      sendUserDataToBackend({
-        first_name: user.name,
-        last_name: null,
-        email: user.email,
-        password:null,
-        mobileNumber:null,
-        platform:"G",
-        platform_id:user.sub,
-        // Add other properties as needed
-      });
-    }
-  }, [isAuthenticated, user]);
+    const fetchData = async () => {
+      if (isAuthenticated) {
+        try {
+          // Get the access token
+          const accessToken = await getAccessTokenSilently();
+
+          // Make an authenticated request to your backend API
+          const response = await fetch('YOUR_BACKEND_API_ENDPOINT', {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${accessToken}`,
+            },
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            setApiData(data);
+          } else {
+            setError('Failed to fetch data from the API');
+          }
+
+        } catch (error) {
+          console.error("Error getting access token or fetching data:", error);
+          setError('Error getting access token or fetching data');
+        }
+      }
+    };
+
+    fetchData();
+  }, [isAuthenticated, getAccessTokenSilently]);
 
   return (
     <div className="navbar">
