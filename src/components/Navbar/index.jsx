@@ -20,8 +20,10 @@ function Navbar() {
       returnTo: window.location.origin,
     });
   };
+
+  {isAuthenticated ? console.log(user):""}
   
-console.log(user);
+
   return (
     <div className="navbar">
       <div className="logo-container">
@@ -50,8 +52,8 @@ console.log(user);
         ( <button onClick={() => loginWithRedirect()}>Log In</button> ) }
       </div>
       <div className="navbar-profile">
-        <p className="person-name">{user.name}</p>
-        <p>{user.email}</p>
+        <p className="person-name">{user?.name}</p>
+        <p>{user?.email}</p>
         <img
           src="https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg"
           alt="pro-pic"
