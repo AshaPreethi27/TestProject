@@ -53,14 +53,11 @@ function Navbar() {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${accessToken}`,
             },
-            // Include any other necessary request body or options for your backend API
           });
 
           if (backendResponse.ok) {
             const backendData = await backendResponse.json();
             setApiData(backendData);
-
-            // Send user data to your backend API
             sendUserDataToBackend({
               first_name: user.name,
               last_name: null,
@@ -69,7 +66,6 @@ function Navbar() {
               mobileNumber: null,
               platform: "G",
               platform_id: user.sub,
-              // Add other properties as needed
             }, accessToken);
           } else {
             setError('Failed to fetch data from the backend API');
@@ -77,6 +73,7 @@ function Navbar() {
 
         } catch (error) {
           console.error("Error in fetching data:", error.message);
+          console.log(error.message)
           setError('Error getting access token or fetching data');
         }
       }
