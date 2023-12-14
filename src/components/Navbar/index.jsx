@@ -36,6 +36,7 @@ function Navbar() {
             } else if(user?.sub.includes("linkedin")){
               platform = "L";
             }
+            const email = user?.email || "";
       const response = await fetch('https://paymentsapi.mindwavetech.com/api/users/social_signup', {
         method: 'POST',
         headers: {
@@ -45,7 +46,7 @@ function Navbar() {
         body: JSON.stringify({
           first_name: user.name,
               last_name: null,
-              email: user.email? user.email: "",
+              email: email,
               password: null,
               mobileNumber: null,
               platform: platform,
