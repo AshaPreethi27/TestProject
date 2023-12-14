@@ -13,7 +13,6 @@ function Navbar() {
     getAccessTokenSilently,
   } = useAuth0();
 
-
   const handleLogout = () => {
     logout({
       returnTo: window.location.origin,
@@ -22,47 +21,50 @@ function Navbar() {
 
   const sendUserDataToBackend = async () => {
     try {
-      const accessToken=await getAccessTokenSilently();
+      const accessToken = await getAccessTokenSilently();
       const originalData = user.sub;
-            const parts = originalData.split("|");
-            const extractedData = parts[1];
-            let platform;
-            if (user?.sub.includes("google")) {
-              platform = "G";
-            } else if (user?.sub.includes("facebook")) {
-              platform = "F";
-            } else if(user?.sub.includes("linkedin")){
-              platform = "L";
-            }else{
-              platform="U";
-            }
-            const email = user?.email || "";
-      const response = await fetch('https://paymentsapi.mindwavetech.com/api/users/social_signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify({
-          first_name: user.name,
-              last_name: null,
-              email: email,
-              password: null,
-              mobileNumber: null,
-              platform: platform,
-              platform_id: extractedData,
-        }),
-      });
+      const parts = originalData.split("|");
+      const extractedData = parts[1];
+      let platform;
+      if (user?.sub.includes("google")) {
+        platform = "G";
+      } else if (user?.sub.includes("facebook")) {
+        platform = "F";
+      } else if (user?.sub.includes("linkedin")) {
+        platform = "L";
+      } else {
+        platform = "G";
+      }
+      const email = user?.email || "";
+      const response = await fetch(
+        "https://paymentsapi.mindwavetech.com/api/users/social_signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          body: JSON.stringify({
+            first_name: user.name,
+            last_name: null,
+            email: email,
+            password: null,
+            mobileNumber: null,
+            platform: platform,
+            platform_id: extractedData,
+          }),
+        }
+      );
 
       if (response.ok) {
         // Handle success, if needed
-        console.log('User data sent to backend successfully');
+        console.log("User data sent to backend successfully");
       } else {
         // Handle error response
-        console.error('Failed to send user data to backend');
+        console.error("Failed to send user data to backend");
       }
     } catch (error) {
-      console.error('Error sending user data to backend', error);
+      console.error("Error sending user data to backend", error);
     }
   };
 
@@ -74,7 +76,7 @@ function Navbar() {
           className="company-logo"
           alt="logo"
         />
-         <button onClick={sendUserDataToBackend} >Send Data to Backend</button>
+        <button onClick={sendUserDataToBackend}>Send Data to Backend</button>
       </div>
 
       <div className="titles-container">
