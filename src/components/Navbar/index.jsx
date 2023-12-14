@@ -22,7 +22,7 @@ function Navbar() {
   };
 
   const sendUserDataToBackend = async (userData, accessToken) => {
-    debugger
+    
     try {
       const response = await fetch(
         "https://paymentsapi.mindwavetech.com/api/users/social_signup",
