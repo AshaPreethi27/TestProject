@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
 
 function Navbar() {
   const {
@@ -21,21 +22,94 @@ function Navbar() {
     });
   };
 
-  const sendUserDataToBackend = async (userData, accessToken) => {
+  // const sendUserDataToBackend = async (userData, accessToken) => {
     
+  //   try {
+  //     const response = await fetch(
+  //       "https://paymentsapi.mindwavetech.com/api/users/social_signup",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           Authorization: `Bearer ${accessToken}`,
+  //         },
+  //         body: JSON.stringify(userData),
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       console.log("User data sent to backend successfully");
+  //     } else {
+  //       console.error("Failed to send user data to backend");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error sending user data to backend", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (isAuthenticated && user) {
+  //       try {
+  //         const accessToken = await getAccessTokenSilently();
+  //         console.log(accessToken);
+  //         const backendResponse = await fetch(
+  //           "https://paymentsapi.mindwavetech.com/api/users/social_signup",
+  //           {
+  //             method: "POST",
+  //             headers: {
+  //               "Content-Type": "application/json",
+  //               Authorization: `Bearer ${accessToken}`,
+  //             },
+  //           }
+  //         );
+
+  //         if (backendResponse.ok) {
+  //           const backendData = await backendResponse.json();
+  //           setApiData(backendData);
+  //           const originalData = user.sub;
+  //           const parts = originalData.split("|");
+  //           const extractedData = parts[1];
+
+  //           sendUserDataToBackend(
+  //             {
+  //               first_name: user.name,
+  //               last_name: null,
+  //               email: user.email,
+  //               password: null,
+  //               mobileNumber: null,
+  //               platform: "G",
+  //               platform_id: extractedData,
+  //             },
+  //             accessToken
+  //           );
+  //         } else {
+  //           setError("Failed to fetch data from the backend API");
+  //         }
+  //       } catch (error) {
+  //         console.error("Error in fetching data:", error.message);
+  //         console.log(error.message);
+  //         setError("Error fetching data");
+  //       }
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [isAuthenticated, user, getAccessTokenSilently]);
+
+  const sendUserDataToBackend = async (userData, accessToken) => {
     try {
-      const response = await fetch(
+      const response = await axios.post(
         "https://paymentsapi.mindwavetech.com/api/users/social_signup",
+        userData,
         {
-          method: "POST",
           headers: {
             Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(userData),
         }
       );
 
-      if (response.ok) {
+      if (response.status === 200) {
         console.log("User data sent to backend successfully");
       } else {
         console.error("Failed to send user data to backend");
@@ -51,19 +125,18 @@ function Navbar() {
         try {
           const accessToken = await getAccessTokenSilently();
           console.log(accessToken);
-          const backendResponse = await fetch(
+          const backendResponse = await axios.post(
             "https://paymentsapi.mindwavetech.com/api/users/social_signup",
+            {},
             {
-              method: "POST",
               headers: {
-                "Content-Type": "application/json",
                 Authorization: `Bearer ${accessToken}`,
               },
             }
           );
 
-          if (backendResponse.ok) {
-            const backendData = await backendResponse.json();
+          if (backendResponse.status === 200) {
+            const backendData = backendResponse.data;
             setApiData(backendData);
             const originalData = user.sub;
             const parts = originalData.split("|");
