@@ -125,12 +125,22 @@ function Navbar() {
         try {
           const accessToken = await getAccessTokenSilently();
           console.log(accessToken);
+
           const backendResponse = await axios.post(
             "https://paymentsapi.mindwavetech.com/api/users/social_signup",
-            {},
+            {
+              first_name: user.name,
+              last_name: null,
+              email: user.email,
+              password: null,
+              mobileNumber: null,
+              platform: "G",
+              platform_id: extractedData,
+            },
             {
               headers: {
                 Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
               },
             }
           );
