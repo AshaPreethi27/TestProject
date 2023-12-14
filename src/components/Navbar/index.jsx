@@ -96,87 +96,122 @@ function Navbar() {
   //   fetchData();
   // }, [isAuthenticated, user, getAccessTokenSilently]);
 
-  const sendUserDataToBackend = async (userData, accessToken) => {
+  // const sendUserDataToBackend = async (userData, accessToken) => {
+  //   try {
+  //     const response = await axios.post(
+  //       "https://paymentsapi.mindwavetech.com/api/users/social_signup",
+  //       userData,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${accessToken}`,
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+
+  //     if (response.status === 200) {
+  //       console.log("User data sent to backend successfully");
+  //     } else {
+  //       console.error("Failed to send user data to backend");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error sending user data to backend", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (isAuthenticated && user) {
+  //       try {
+  //         const accessToken = await getAccessTokenSilently();
+  //         console.log(accessToken);
+
+  //         const backendResponse = await axios.post(
+  //           "https://paymentsapi.mindwavetech.com/api/users/social_signup",
+  //           {
+  //             first_name: user.name,
+  //             last_name: null,
+  //             email: user.email,
+  //             password: null,
+  //             mobileNumber: null,
+  //             platform: "G",
+  //             platform_id: extractedData,
+  //           },
+  //           {
+  //             headers: {
+  //               Authorization: `Bearer ${accessToken}`,
+  //               "Content-Type": "application/json",
+  //             },
+  //           }
+  //         );
+
+  //         if (backendResponse.status === 200) {
+  //           const backendData = backendResponse.data;
+  //           setApiData(backendData);
+  //           const originalData = user.sub;
+  //           const parts = originalData.split("|");
+  //           const extractedData = parts[1];
+
+  //           sendUserDataToBackend(
+  //             {
+  //               first_name: user.name,
+  //               last_name: null,
+  //               email: user.email,
+  //               password: null,
+  //               mobileNumber: null,
+  //               platform: "G",
+  //               platform_id: extractedData,
+  //             },
+  //             accessToken
+  //           );
+  //         } else {
+  //           setError("Failed to fetch data from the backend API");
+  //         }
+  //       } catch (error) {
+  //         console.error("Error in fetching data:", error.message);
+  //         console.log(error.message);
+  //         setError("Error fetching data");
+  //       }
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [isAuthenticated, user, getAccessTokenSilently]);
+
+  const sendUserDataToBackend = async () => {
     try {
-      const response = await axios.post(
-        "https://paymentsapi.mindwavetech.com/api/users/social_signup",
-        userData,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        console.log("User data sent to backend successfully");
-      } else {
-        console.error("Failed to send user data to backend");
-      }
-    } catch (error) {
-      console.error("Error sending user data to backend", error);
-    }
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (isAuthenticated && user) {
-        try {
-          const accessToken = await getAccessTokenSilently();
-          console.log(accessToken);
-
-          const backendResponse = await axios.post(
-            "https://paymentsapi.mindwavetech.com/api/users/social_signup",
-            {
-              first_name: user.name,
+      const accessToken=await getAccessTokenSilently();
+      const originalData = user.sub;
+            const parts = originalData.split("|");
+            const extractedData = parts[1];
+      const response = await fetch('https://paymentsapi.mindwavetech.com/api/users/social_signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({
+          first_name: user.name,
               last_name: null,
               email: user.email,
               password: null,
               mobileNumber: null,
               platform: "G",
               platform_id: extractedData,
-            },
-            {
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-                "Content-Type": "application/json",
-              },
-            }
-          );
+        }),
+      });
 
-          if (backendResponse.status === 200) {
-            const backendData = backendResponse.data;
-            setApiData(backendData);
-            const originalData = user.sub;
-            const parts = originalData.split("|");
-            const extractedData = parts[1];
-
-            sendUserDataToBackend(
-              {
-                first_name: user.name,
-                last_name: null,
-                email: user.email,
-                password: null,
-                mobileNumber: null,
-                platform: "G",
-                platform_id: extractedData,
-              },
-              accessToken
-            );
-          } else {
-            setError("Failed to fetch data from the backend API");
-          }
-        } catch (error) {
-          console.error("Error in fetching data:", error.message);
-          console.log(error.message);
-          setError("Error fetching data");
-        }
+      if (response.ok) {
+        // Handle success, if needed
+        console.log('User data sent to backend successfully');
+      } else {
+        // Handle error response
+        console.error('Failed to send user data to backend');
       }
-    };
-
-    fetchData();
-  }, [isAuthenticated, user, getAccessTokenSilently]);
+    } catch (error) {
+      console.error('Error sending user data to backend', error);
+    }
+  };
 
   return (
     <div className="navbar">
@@ -186,6 +221,7 @@ function Navbar() {
           className="company-logo"
           alt="logo"
         />
+         <button onClick={sendUserDataToBackend}>Send Data to Backend</button>
       </div>
 
       <div className="titles-container">
