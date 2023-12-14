@@ -19,8 +19,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     clientId="fxm1RMrcnIY0u3vyEC6T9zxL2c1nVRLg"
   
     authorizationParams={{
-      redirect_uri: window.location.origin
+      redirect_uri: window.location.origin,
+      audience:"https://paymentsapi.mindwavetech.com/api/users/social_signup",
     }}
+    scope='openid email profile'
   >
     <App />
     </Auth0Provider>
