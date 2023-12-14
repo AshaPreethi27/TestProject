@@ -57,6 +57,7 @@ function Navbar() {
               headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${accessToken}`,
+                credentials: 'include',
               },
             }
           );
@@ -86,7 +87,7 @@ function Navbar() {
         } catch (error) {
           console.error("Error in fetching data:", error.message);
           console.log(error.message);
-          setError("Error getting access token or fetching data");
+          setError("Error fetching data");
         }
       }
     };
