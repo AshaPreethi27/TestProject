@@ -24,6 +24,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     }}
   
     scope='openid email profile'
+    useRefreshTokens={true}
+    additionalSignUpFields={[
+      {
+        name: "email", // Ask for email
+        storage: "root",
+        // ... other options
+      },
+    ]}
   >
     <App />
     </Auth0Provider>
