@@ -11,6 +11,7 @@ function Navbar() {
     logout,
     user,
     getAccessTokenSilently,
+    getIdTokenClaims
   } = useAuth0();
 
   const handleLogout = () => {
@@ -68,6 +69,23 @@ function Navbar() {
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      if (isAuthenticated && user) {
+        try {
+          const idTokenClaims = await getIdTokenClaims();
+  
+          // Check the claims, especially the 'email' field
+          console.log(idTokenClaims);
+        } catch (error) {
+          console.error("Error fetching ID token claims:", error);
+        }
+      }
+    };
+  
+    fetchData();
+  }, [isAuthenticated, user, getIdTokenClaims]);
+
   return (
     <div className="navbar">
       <div className="logo-container">
@@ -76,7 +94,7 @@ function Navbar() {
           className="company-logo"
           alt="logo"
         />
-        <button onClick={sendUserDataToBackend}>Send Data to Backend</button>
+        <button onClick={sendUserDataToBackend}>Send</button>
       </div>
 
       <div className="titles-container">
