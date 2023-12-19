@@ -31,11 +31,18 @@ const Main = () => {
     initializeFacebookSDK();
   }, []);
 
-  // Handle Facebook login
-  const handleFacebookLogin = (response) => {
-    console.log(response);
-    // Handle the login response here
+  const handleFacebookLogin = async () => {
+    try {
+      const response = await window.FB.login();
+  
+      // Handle the login response
+      console.log('User logged in:', response);
+    } catch (error) {
+      // Handle login error
+      console.error('Facebook login error:', error);
+    }
   };
+  
   return (
     <div className="body-container">
       <LeftColumn className="left-container" />
