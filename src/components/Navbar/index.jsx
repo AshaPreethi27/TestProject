@@ -129,7 +129,6 @@ function Navbar() {
           fieldsProfile={
             'id,first_name,last_name,middle_name,name,name_format,picture,short_name,email,gender'
           }
-          redirect_uri="https://test-project-six-zeta.vercel.app/dashboard"
           onResolve={(response) => {
             console.log(response)
           }}
