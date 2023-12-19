@@ -10,7 +10,7 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
   <BrowserRouter>
-  {/* <Auth0Provider
+  <Auth0Provider
     domain="dev-4jf7lwtlqisur13h.us.auth0.com"
     clientId="fxm1RMrcnIY0u3vyEC6T9zxL2c1nVRLg"
     authorizationParams={{
@@ -18,9 +18,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
      
     }}
     scope='openid email profile'
-  > */}
+  >
     <App />
-    {/* </Auth0Provider> */}
+    </Auth0Provider>
   </BrowserRouter>
   </React.StrictMode>
 );
