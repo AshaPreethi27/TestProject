@@ -101,7 +101,7 @@ function Navbar() {
           className="company-logo"
           alt="logo"
         />
-        <button onClick={sendUserDataToBackend}>Send</button>
+        {/* <button onClick={sendUserDataToBackend}>Send</button> */}
       </div>
 
       <div className="titles-container">
@@ -123,7 +123,7 @@ function Navbar() {
           <button onClick={() => loginWithRedirect()}>Log In</button>
         )}
       </div> */}
-      
+
          <LoginSocialFacebook
           appId="868396208106445"
           fieldsProfile={
