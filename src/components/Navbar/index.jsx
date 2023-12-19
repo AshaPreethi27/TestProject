@@ -124,7 +124,7 @@ function Navbar() {
         )}
       </div> */}
 
-      <LoginSocialFacebook
+      {/* <LoginSocialFacebook
         appId="868396208106445"
         onResolve={(response) => {
           console.log(response);
@@ -135,7 +135,23 @@ function Navbar() {
         redirect_uri="https://test-project-six-zeta.vercel.app/"
       >
         <FacebookLoginButton />
-      </LoginSocialFacebook>
+      </LoginSocialFacebook> */}
+         <LoginSocialFacebook
+          appId="868396208106445"
+          fieldsProfile={
+            'id,first_name,last_name,middle_name,name,name_format,picture,short_name,email,gender'
+          }
+          redirect_uri="https://test-project-six-zeta.vercel.app/dashboard"
+          onResolve={(response) => {
+            console.log(response)
+          }}
+          onReject={err => {
+            console.log(err);
+          }}
+        >
+          <FacebookLoginButton />
+        </LoginSocialFacebook>
+
       <div className="navbar-profile">
         {/* <p className="person-name">{user?.name}</p>
         <p>{user?.email}</p>
