@@ -1,9 +1,10 @@
 import "./styles.css";
-import React from "react";
+import React,{useEffect} from "react";
 import LeftColumn from "../LeftColumn";
 import Analytics from "../Analytics";
 import MyCandidates from "../MyCandidates";
 import MyJobs from "../MyJobs";
+
 
 function Dashboard() {
   window.fbAsyncInit = function() {
@@ -39,7 +40,7 @@ const Main = () => {
     <div className="body-container">
       <LeftColumn className="left-container" />
        <div className="middle-container">
-       <FacebookLoginButton onLogin={handleFacebookLogin} />
+       <button onClick={handleFacebookLogin} >Login with Facebook</button>
        </div>
     </div>
   );
