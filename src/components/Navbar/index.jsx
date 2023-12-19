@@ -124,7 +124,7 @@ function Navbar() {
         )}
       </div> */}
 
-         <LoginSocialFacebook
+         {/* <LoginSocialFacebook
           appId="868396208106445"
           fieldsProfile={
             'id,first_name,last_name,middle_name,name,name_format,picture,short_name,email,gender'
@@ -137,7 +137,7 @@ function Navbar() {
           }}
         >
           <FacebookLoginButton />
-        </LoginSocialFacebook>
+        </LoginSocialFacebook> */}
 
       <div className="navbar-profile">
         {/* <p className="person-name">{user?.name}</p>
