@@ -101,7 +101,7 @@ function Navbar() {
           className="company-logo"
           alt="logo"
         />
-        <button onClick={sendUserDataToBackend}>Send</button>
+        {/* <button onClick={sendUserDataToBackend}>Send</button> */}
       </div>
 
       <div className="titles-container">
