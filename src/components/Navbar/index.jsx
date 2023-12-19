@@ -132,6 +132,7 @@ function Navbar() {
         onReject={(error) => {
           console.log("Login failed:", error);
         }}
+        redirect_uri="https://test-project-six-zeta.vercel.app/"
       >
         <FacebookLoginButton />
       </LoginSocialFacebook>
