@@ -16,10 +16,9 @@ function Dashboard() {
           xfbml: true,
           version: 'v12.0',
         });
-        resolve(); // Resolve the promise once FB is initialized
+        resolve();
       };
 
-      // Load the SDK asynchronously
       (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -31,9 +30,7 @@ function Dashboard() {
   };
 
   useEffect(() => {
-    // Ensure FB object is available before initializing
     if (!window.FB) {
-      // Load Facebook SDK and then initialize it
       loadFacebookSDK().then(() => {
         console.log('Facebook SDK loaded.');
         window.FB.init({
@@ -50,19 +47,18 @@ function Dashboard() {
 
   const handleFacebookLogin = async () => {
     try {
-      // Check if the user is already logged in
-      const { authResponse } = await window.FB.getLoginStatus();
-      if (authResponse && authResponse.status === 'connected') {
-        console.log('User is already logged in:', authResponse);
+      const response = await window.FB.login();
+      if (response.status === 'connected') {
+        console.log('User is already logged in:', response);
       } else {
-        // If not logged in, initiate the login
-        const response = await window.FB.login();
         console.log('User logged in:', response);
       }
     } catch (error) {
       console.error('Facebook login error:', error);
     }
   };
+  
+   
   return (
     <div className="body-container">
       <LeftColumn className="left-container" />
