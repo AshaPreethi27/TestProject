@@ -7,38 +7,47 @@ import MyJobs from "../MyJobs";
 
 
 function Dashboard() {
-  window.fbAsyncInit = function() {
-    window.FB.init({
-      appId: '868396208106445',
-      autoLogAppEvents: true,
-      xfbml: true,
-      version: 'v12.0', // Specify the version you want to use
-    });
-  };
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/en_US/sdk.js';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-};
-
-const Main = () => {
   useEffect(() => {
+    const initializeFacebookSDK = () => {
+      window.fbAsyncInit = function () {
+        window.FB.init({
+          appId: '868396208106445',
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: 'v12.0',
+        });
+      };
+
+      // Load the SDK asynchronously
+      (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+      // Ensure FB object is available before using it
+      if (window.FB) {
+        initializeFacebookSDK();
+      } else {
+        console.error('Facebook SDK not available.');
+      }
+    };
+
     initializeFacebookSDK();
   }, []);
 
   const handleFacebookLogin = async () => {
     try {
-      const response = await window.FB.login();
-  
-      // Handle the login response
-      console.log('User logged in:', response);
+      // Ensure FB object is available before calling login
+      if (window.FB) {
+        const response = await window.FB.login();
+        console.log('User logged in:', response);
+      } else {
+        console.error('Facebook SDK not available.');
+      }
     } catch (error) {
-      // Handle login error
       console.error('Facebook login error:', error);
     }
   };
