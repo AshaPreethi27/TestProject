@@ -7,8 +7,8 @@ import MyJobs from "../MyJobs";
 
 
 function Dashboard() {
-  useEffect(() => {
-    const initializeFacebookSDK = () => {
+  const loadFacebookSDK = () => {
+    return new Promise((resolve) => {
       window.fbAsyncInit = function () {
         window.FB.init({
           appId: '868396208106445',
@@ -16,6 +16,7 @@ function Dashboard() {
           xfbml: true,
           version: 'v12.0',
         });
+        resolve(); // Resolve the promise once FB is initialized
       };
 
       // Load the SDK asynchronously
@@ -26,16 +27,25 @@ function Dashboard() {
         js.src = 'https://connect.facebook.net/en_US/sdk.js';
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+    });
+  };
 
-      // Ensure FB object is available before initializing
-      if (window.FB) {
-        initializeFacebookSDK();
-      } else {
-        console.error('Facebook SDK not available.');
-      }
-    };
-
-    initializeFacebookSDK();
+  useEffect(() => {
+    // Ensure FB object is available before initializing
+    if (!window.FB) {
+      // Load Facebook SDK and then initialize it
+      loadFacebookSDK().then(() => {
+        console.log('Facebook SDK loaded.');
+        window.FB.init({
+          appId: '868396208106445',
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: 'v12.0',
+        });
+      });
+    } else {
+      console.log('Facebook SDK already available.');
+    }
   }, []);
 
   const handleFacebookLogin = async () => {
@@ -53,7 +63,6 @@ function Dashboard() {
       console.error('Facebook login error:', error);
     }
   };
-  
   return (
     <div className="body-container">
       <LeftColumn className="left-container" />
