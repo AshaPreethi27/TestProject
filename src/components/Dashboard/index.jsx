@@ -48,11 +48,11 @@ function Dashboard() {
   const handleFacebookLogin = async () => {
     try {
       const response = await window.FB.login();
-      // if (response.status === 'connected') {
-      //   console.log('User is already logged in:', response);
-      // } else {
-      //   console.log('User logged in:', response);
-      // }
+      if (response.status === 'connected') {
+        console.log('User is already logged in:', response);
+      } else {
+        console.log('User logged in:', response);
+      }
     } catch (error) {
       console.error('Facebook login error:', error);
     }
