@@ -27,7 +27,7 @@ function Dashboard() {
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
 
-      // Ensure FB object is available before using it
+      // Ensure FB object is available before initializing
       if (window.FB) {
         initializeFacebookSDK();
       } else {
@@ -40,12 +40,14 @@ function Dashboard() {
 
   const handleFacebookLogin = async () => {
     try {
-      // Ensure FB object is available before calling login
-      if (window.FB) {
+      // Check if the user is already logged in
+      const { authResponse } = await window.FB.getLoginStatus();
+      if (authResponse && authResponse.status === 'connected') {
+        console.log('User is already logged in:', authResponse);
+      } else {
+        // If not logged in, initiate the login
         const response = await window.FB.login();
         console.log('User logged in:', response);
-      } else {
-        console.error('Facebook SDK not available.');
       }
     } catch (error) {
       console.error('Facebook login error:', error);
