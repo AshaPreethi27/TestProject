@@ -57,13 +57,22 @@ function Dashboard() {
       console.error('Facebook login error:', error);
     }
   };
+
+  const handleFacebookLogout = async () => {
+    try {
+      const response = await window.FB.logout();
+      console.log('User logged out:', response);
+    } catch (error) {
+      console.error('Facebook logout error:', error);
+    }
+  };
   
-   
   return (
     <div className="body-container">
       <LeftColumn className="left-container" />
        <div className="middle-container">
        <button onClick={handleFacebookLogin} >Login with Facebook</button>
+       <button onClick={handleFacebookLogout}>Logout</button>
        {/* <p>{response?.name}</p>
        <p>{response?.email}</p> */}
        </div>
