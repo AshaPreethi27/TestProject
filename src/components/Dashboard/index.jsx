@@ -48,7 +48,6 @@ function Dashboard() {
   const handleFacebookLogin = async () => {
     try {
       const response = await window.FB.login();
-      console.log(response)
       // if (response.status === 'connected') {
       //   console.log('User is already logged in:', response);
       // } else {
@@ -65,8 +64,8 @@ function Dashboard() {
       <LeftColumn className="left-container" />
        <div className="middle-container">
        <button onClick={handleFacebookLogin} >Login with Facebook</button>
-       <p>{response?.name}</p>
-       <p>{response?.email}</p>
+       {/* <p>{response?.name}</p>
+       <p>{response?.email}</p> */}
        </div>
     </div>
   );
